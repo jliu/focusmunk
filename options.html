@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Focus Whitelist - Options</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding:18px; max-width:820px; }
+    h1 { font-size:18px; margin-bottom:6px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    textarea, input[type="text"], input[type="password"], select { width:100%; box-sizing:border-box; padding:8px; margin-top:6px; border-radius:6px; border:1px solid #ddd; }
+    table { width:100%; border-collapse:collapse; margin-top:8px;}
+    th, td { padding:6px; border:1px solid #eee; text-align:left; }
+    .row { display:flex; gap:8px; margin-top:8px; }
+    button { padding:8px 10px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; }
+    .muted { color:#666; font-size:13px; margin-top:6px; }
+  </style>
+</head>
+<body>
+  <h1>Focus Whitelist — Options</h1>
+
+  <div id="lockedMessage" style="display:none;">
+    <p>You must enter the password to edit settings.</p>
+    <input id="pwInput" type="password" placeholder="Enter password" />
+    <div style="margin-top:8px;"><button id="unlockBtn">Unlock</button></div>
+  </div>
+
+  <div id="settingsArea" style="display:none;">
+    <label>Whitelist (one regex per line)</label>
+    <textarea id="whitelist" rows="6" placeholder="e.g. ^https?://(www\.)?example\.com"></textarea>
+
+    <label>Schedules (per day). Use HH:MM 24-hour format. You can add multiple ranges per day.</label>
+    <div id="schedules"></div>
+
+    <label>Password (plaintext)</label>
+    <input id="password" type="password" />
+
+    <div style="margin-top:12px;">
+      <button id="saveBtn">Save</button>
+      <button id="cancelBtn">Cancel</button>
+    </div>
+
+    <div class="muted">Note: The same password is used to unlock/disable blocking and to edit settings. Password is stored plaintext in extension storage.</div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

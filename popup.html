@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Focus Whitelist</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; width:260px; padding:12px; }
+    .status { margin-bottom:10px; font-weight:600; }
+    button { padding:8px 10px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; }
+    .actions { display:flex; gap:8px; }
+    .mini { font-size:12px; color:#666; margin-top:8px; }
+    a { color: #06c; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="status" id="status">Loading…</div>
+  <div class="actions">
+    <button id="toggle">Toggle (requires password)</button>
+    <button id="unlock">Unlock (enter password)</button>
+  </div>
+  <div class="mini">
+    <div>Open <a id="opts" href="#">Options</a> to edit whitelist & schedule.</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/* block.css */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f7fafc; color:#111; }
+main { text-align:center; background:white; padding:28px; border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); width:520px; }
+h1 { margin:0; font-size:26px; }
+p { margin-top:10px; color:#333; }
+.muted { color:#666; word-break:break-all; }
