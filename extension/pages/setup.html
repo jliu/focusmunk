@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>focusmunk Setup</title>
+  <link rel="stylesheet" href="../styles/shared.css">
+  <style>
+    .or { text-align: center; color: var(--text3); font-size: 13px; margin: 16px 0; position: relative; }
+    .or::before, .or::after { content: ''; position: absolute; top: 50%; width: calc(50% - 20px); height: 1px; background: var(--border); }
+    .or::before { left: 0; }
+    .or::after { right: 0; }
+    .confirm-icon { font-size: 48px; margin-bottom: 12px; }
+    .day-inputs { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+    .day-inputs label { font-size: 14px; color: var(--text2); }
+    .day-inputs input { width: 80px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div class="logo">focusmunk</div>
+    </div>
+
+    <!-- Initial -->
+    <div id="s-initial" class="card">
+      <h2 style="text-align:center;margin-bottom:20px;">Get Started</h2>
+      <button id="btn-enter-id" class="full-width">Enter Configuration ID</button>
+      <div class="or">or</div>
+      <button id="btn-create" class="btn-primary full-width">Create New Configuration</button>
+    </div>
+
+    <!-- Enter ID -->
+    <div id="s-enter-id" class="card hidden">
+      <h2 style="margin-bottom:16px;">Enter Configuration ID</h2>
+      <div id="id-error" class="error hidden"></div>
+      <div class="form-group">
+        <label class="form-label">Server URL</label>
+        <input type="text" id="input-server-id" placeholder="https://your-server.com" value="http://localhost:5000">
+        <p class="form-hint">The focusmunk server address</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Configuration ID</label>
+        <input type="text" id="input-id" placeholder="ABCD-1234" maxlength="9">
+        <p class="form-hint">Get this from your accountability partner</p>
+      </div>
+      <div class="btn-group">
+        <button id="id-back">Back</button>
+        <button id="id-submit" class="btn-primary">Submit</button>
+      </div>
+    </div>
+
+    <!-- Setup Code -->
+    <div id="s-code" class="card hidden">
+      <h2 style="margin-bottom:16px;">Step 1: Server & Setup Code</h2>
+      <div id="code-error" class="error hidden"></div>
+      <div class="form-group">
+        <label class="form-label">Server URL</label>
+        <input type="text" id="input-server" placeholder="https://your-server.com" value="http://localhost:5000">
+        <p class="form-hint">The focusmunk server address</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Setup Code</label>
+        <input type="password" id="input-code" placeholder="Enter setup code">
+        <p class="form-hint">Required to create new configurations</p>
+      </div>
+      <div class="btn-group">
+        <button id="code-back">Back</button>
+        <button id="code-continue" class="btn-primary">Continue</button>
+      </div>
+    </div>
+
+    <!-- Config -->
+    <div id="s-config" class="card hidden">
+      <h2 style="margin-bottom:16px;">Step 2: Configure</h2>
+      <div id="cfg-error" class="error hidden"></div>
+      
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" id="input-pwd" placeholder="Choose a password">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" id="input-pwd2" placeholder="Confirm password">
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="form-group">
+        <label class="form-label">Daily Free Time (minutes)</label>
+        <p class="form-hint" style="margin-bottom:12px;">How many minutes of unblocked browsing per day</p>
+        <div class="day-inputs">
+          <label>Monday:</label><input type="number" id="free-mon" value="0" min="0">
+          <label>Tuesday:</label><input type="number" id="free-tue" value="0" min="0">
+          <label>Wednesday:</label><input type="number" id="free-wed" value="0" min="0">
+          <label>Thursday:</label><input type="number" id="free-thu" value="0" min="0">
+          <label>Friday:</label><input type="number" id="free-fri" value="0" min="0">
+          <label>Saturday:</label><input type="number" id="free-sat" value="0" min="0">
+          <label>Sunday:</label><input type="number" id="free-sun" value="0" min="0">
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="form-group">
+        <label class="form-label">Whitelist (URL patterns)</label>
+        <textarea id="input-whitelist" placeholder="Regex patterns, one per line"></textarea>
+        <p class="form-hint">URLs matching these are always allowed</p>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="form-group">
+        <label class="form-label">YouTube Keywords</label>
+        <textarea id="input-keywords" placeholder="Keywords, one per line"></textarea>
+        <p class="form-hint">Only videos with these words in title are allowed</p>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="form-group">
+        <label class="form-label">YouTube Creators</label>
+        <textarea id="input-creators" placeholder="Channel URLs or names, one per line&#10;e.g. @3blue1brown or https://youtube.com/@3blue1brown"></textarea>
+        <p class="form-hint">All videos from these creators are allowed</p>
+      </div>
+      
+      <div class="btn-group">
+        <button id="cfg-back">Back</button>
+        <button id="cfg-create" class="btn-primary">Create Configuration</button>
+      </div>
+    </div>
+
+    <!-- Confirm -->
+    <div id="s-confirm" class="card hidden" style="text-align:center;">
+      <h2 style="margin-bottom:8px;">Configuration Created!</h2>
+      <p style="color:var(--text2);margin-bottom:20px;">Save this ID somewhere safe.</p>
+      <div class="config-id" style="justify-content:center;margin-bottom:20px;">
+        <span id="final-id"></span>
+        <button class="copy-btn" id="copy-id">Copy</button>
+      </div>
+      <button id="done-btn" class="btn-primary full-width">Done</button>
+    </div>
+  </div>
+  <script src="../scripts/setup.js"></script>
+</body>
+</html>

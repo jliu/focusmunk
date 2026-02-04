@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>focusmunk Settings</title>
+  <link rel="stylesheet" href="../styles/shared.css">
+  <style>
+    .day-inputs { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+    .day-inputs label { font-size: 14px; color: var(--text2); }
+    .day-inputs input { width: 80px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div class="logo">focusmunk</div>
+    </div>
+
+    <!-- Login -->
+    <div id="s-login" class="card">
+      <h2 style="text-align:center;margin-bottom:16px;">Enter Password</h2>
+      <div id="login-err" class="error hidden"></div>
+      <div class="form-group">
+        <input type="password" id="login-pwd" placeholder="Password">
+      </div>
+      <button id="login-btn" class="btn-primary full-width">Unlock</button>
+    </div>
+
+    <!-- Settings -->
+    <div id="s-settings" class="hidden">
+      
+      <!-- Status -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h3>Status</h3>
+          <span id="badge" class="badge inactive"><span class="dot"></span><span id="badge-text">Inactive</span></span>
+        </div>
+        <label class="form-label">Configuration ID</label>
+        <div class="config-id"><span id="cfg-id"></span><button class="copy-btn" id="copy-id">Copy</button></div>
+      </div>
+
+      <!-- Daily Free Time -->
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Daily Free Time (minutes)</h3>
+        <p class="form-hint" style="margin-bottom:12px;">How many minutes of unblocked browsing per day</p>
+        <div class="day-inputs">
+          <label>Monday:</label><input type="number" id="free-mon" value="0" min="0">
+          <label>Tuesday:</label><input type="number" id="free-tue" value="0" min="0">
+          <label>Wednesday:</label><input type="number" id="free-wed" value="0" min="0">
+          <label>Thursday:</label><input type="number" id="free-thu" value="0" min="0">
+          <label>Friday:</label><input type="number" id="free-fri" value="0" min="0">
+          <label>Saturday:</label><input type="number" id="free-sat" value="0" min="0">
+          <label>Sunday:</label><input type="number" id="free-sun" value="0" min="0">
+        </div>
+      </div>
+
+      <!-- Whitelist -->
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Whitelist</h3>
+        <p class="form-hint" style="margin-bottom:12px;">URL patterns to always allow (one per line)</p>
+        <textarea id="wl-input" rows="4" placeholder="e.g. wikipedia\.org"></textarea>
+      </div>
+
+      <!-- YouTube Keywords -->
+      <div class="card">
+        <h3 style="margin-bottom:12px;">YouTube Keywords</h3>
+        <p class="form-hint" style="margin-bottom:12px;">Videos with these words in title are allowed (one per line)</p>
+        <textarea id="kw-input" rows="4" placeholder="e.g. tutorial"></textarea>
+      </div>
+
+      <!-- YouTube Creators -->
+      <div class="card">
+        <h3 style="margin-bottom:12px;">YouTube Creators</h3>
+        <p class="form-hint" style="margin-bottom:12px;">All videos from these creators are allowed (one per line)</p>
+        <textarea id="creator-input" rows="4" placeholder="e.g. @3blue1brown"></textarea>
+      </div>
+
+      <!-- Change Password -->
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Change Password</h3>
+        <div id="pwd-err" class="error hidden"></div>
+        <div id="pwd-ok" class="success hidden"></div>
+        <div class="form-group">
+          <label class="form-label">Current Password</label>
+          <input type="password" id="cur-pwd" placeholder="Current password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">New Password</label>
+          <input type="password" id="new-pwd" placeholder="New password">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Confirm New Password</label>
+          <input type="password" id="new-pwd2" placeholder="Confirm">
+        </div>
+        <button id="change-pwd" style="margin-top:12px;">Change Password</button>
+      </div>
+
+      <!-- Save/Cancel -->
+      <div class="btn-group right">
+        <button id="cancel-btn">Cancel</button>
+        <button id="save-btn" class="btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+  <script src="../scripts/settings.js"></script>
+</body>
+</html>
